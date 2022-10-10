@@ -1,3 +1,8 @@
+from django.contrib import admin
+from django.urls import path, include
+
+from views import home_view, time_view, workdir_view
+
 """app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,8 +23,11 @@ from django.http import HttpResponseRedirect
 from django.urls import path
 from .views import table_view
 
+
+
 urlpatterns = [
+    path('', home_view, name='home'),
+    path('current_time/', time_view, name='time'),
+    path('workdir/', workdir_view, name='workdir'),
     path('admin/', admin.site.urls),
-    path('table/', table_view),
-    path('', lambda x: HttpResponseRedirect('/table/')),
 ]
